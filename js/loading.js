@@ -14,6 +14,101 @@ var params = new URLSearchParams(window.location.search);
 var urlMap = params.get('Map') || params.get('map') || '';
 var urlSteam = params.get('SteamId') || params.get('steamid') || '';
 
+var song_directory = [
+    {
+        track_name: 'Light Velocity Ver. II',
+        artist_name: 'Isamu Ohira',
+        cover_id: 0,
+        link: 'tracks/lightvelv2.mp3',
+    },
+    {
+        track_name: 'GT Mode 5',
+        artist_name: 'Isamu Ohira',
+        cover_id: 0,
+        link: 'tracks/gtmode5.mp3',
+    },
+    {
+        track_name: 'GT Mode 2',
+        artist_name: 'Isamu Ohira',
+        cover_id: 0,
+        link: 'tracks/gtmode2.mp3',
+    },
+    {
+        track_name: 'GT Mode 1',
+        artist_name: 'Isamu Ohira',
+        cover_id: 0,
+        link: 'tracks/gtmode1.mp3',
+    },
+    {
+        track_name: 'Race Menu 2',
+        artist_name: 'Isamu Ohira',
+        cover_id: 0,
+        link: 'tracks/racemenu2.mp3',
+    },
+    {
+        track_name: 'Sunday Afternoon',
+        artist_name: 'Sota Fujimori and Naoyuki Sato',
+        cover_id: 1,
+        link: 'tracks/sundayafternoon.mp3',
+    },
+    {
+        track_name: 'See you on Saturday!',
+        artist_name: 'Hyd Lunch',
+        cover_id: 2,
+        link: 'tracks/seeyaonsaturday.mp3',
+    },
+    {
+        track_name: 'highway',
+        artist_name: 'Chihiro Aoki',
+        cover_id: 3,
+        link: 'tracks/highway.mp3',
+    },
+    {
+        track_name: 'New Serena',
+        artist_name: 'Yuichi Kanatani',
+        cover_id: 4,
+        link: 'tracks/newserena.mp3',
+    },
+    {
+        track_name: 'Casino',
+        artist_name: 'Chihiro Aoki',
+        cover_id: 4,
+        link: 'tracks/casino.mp3',
+    },
+    {
+        track_name: "Singin' Bass",
+        artist_name: 'Hidenori Shoji',
+        cover_id: 5,
+        link: 'tracks/singinbass.mp3',
+    },
+    {
+        track_name: 'Management',
+        artist_name: 'Hideki Sakamoto',
+        cover_id: 6,
+        link: 'tracks/mgmt.opus',
+    },
+];
+// Source - https://stackoverflow.com/a/2450976
+// Posted by ChristopheD, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-06-13, License - CC BY-SA 4.0
+
+function shuffleDatMuzak() {
+    let array = song_directory;
+    let currentIndex = array.length;
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+
+        // Pick a remaining element...
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+}
+
 function setBackground(mapName) {
     var img = new Image();
     img.onload = function() {
@@ -36,6 +131,7 @@ if (urlSteam) {
 }
 
 function startMusic(vol) {
+
     if (musicStarted) return;
     musicStarted = true;
     music.volume = 0.3;
@@ -147,14 +243,14 @@ var _cbMsgs = document.getElementById('_cb_msgs');
 
 var _tips = [
     { user: 'Zukma', msg: 'Si ves a un usuario rompiendo las reglas abrí ticket en discord.' },
-    { user: 'hana', msg: 'Si te metés al discord y al steamgroup recibís el rango PLANET' },
+    { user: 'Hana', msg: 'Si te metés al discord y al steamgroup recibís el rango PLANET' },
     { user: 'Zukma', msg: 'El buildmode se alterna usando los comandos !build y !pvp' },
-    { user: 'hana', msg: 'Usar el Buildmode para cualquier cosa que implique molestar es sancionable' },
+    { user: 'Hana', msg: 'Usar el Buildmode para cualquier cosa que implique molestar es sancionable' },
     { user: 'Zukma', msg: 'Nova fue fundado en el 19/02/24' },
-    { user: 'hana', msg: 'Si querés ver la documentación de Nova usá !motd' },
+    { user: 'Hana', msg: 'Si querés ver la documentación de Nova usá !motd' },
     { user: 'Zukma', msg: 'Lee todas las reglas que están a la derecha de esta pantalla de carga, son pocas.' },
-    { user: 'hana', msg: 'Gracias por jugar en Nova' },
-    { user: 'hana', msg: 'Unite a nuestro servidor de discord usando !discord' },
+    { user: 'Hana', msg: 'Gracias por jugar en Nova' },
+    { user: 'Hana', msg: 'Unite a nuestro servidor de discord usando !discord' },
 ];
 
 var _colors = { '(owner) zukma': '#c91515', '(co-owner) hana': '#f9a8d4' };
